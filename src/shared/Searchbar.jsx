@@ -1,15 +1,16 @@
 import React,{useRef} from 'react'
 import './Searchbar.css'
 import {Col, Form, FormGroup} from 'reactstrap'
-
+import { BASE_URL } from '../utils/config'
+import { useNavigate } from 'react-router-dom'
 
 const Searchbar = () => {
 
    const locationRef= useRef('');
    const distanceRef=useRef(null);
    const groupSizeRef= useRef(null);
-
-    const searchHandler = ()=>{
+   const navigate = useNavigate();
+    const searchHandler =async ()=>{
       const location = locationRef.current;
       const distance = distanceRef.current;
       const size = groupSizeRef.current;
@@ -17,6 +18,7 @@ const Searchbar = () => {
         alert("Fields cannot be Empty!");
         // return;
      }
+     const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${size}`)
 }
 
   return (
