@@ -11,11 +11,12 @@ const useFetch=(url)=>{
         try {
             const res = await fetch(url);
             if(!res.ok){
-                seterror("failed to fetch Data");
-                alert("failed to fetch Data");
+             seterror("failed to fetch Data");
+                 alert("failed to fetch Data");
             }
             const result = await res.json();
             setdata(result.data);
+            console.log(result.data);
             setloading(false);
         } catch (error) {
             seterror(error);

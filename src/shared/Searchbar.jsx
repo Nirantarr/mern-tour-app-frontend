@@ -10,6 +10,7 @@ const Searchbar = () => {
    const distanceRef=useRef(null);
    const groupSizeRef= useRef(null);
    const navigate = useNavigate();
+
     const searchHandler =async ()=>{
       const location = locationRef.current;
       const distance = distanceRef.current;
@@ -18,12 +19,17 @@ const Searchbar = () => {
         alert("Fields cannot be Empty!");
         // return;
      }
-     const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${size}`)
+     const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${size}`);
+
+     if(!res.ok) {
+        return alert("something went wrong");
+     }
+     const result = await res.json();
+     navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${size}`,{state:result.data});
 }
 
   return (
-    <Col lg=
-    '12'>
+    <Col lg='12'>
         <div className="search__bar">
             <Form className='d-flex align-items-center gap-4'>
                 <FormGroup className='d-flex gap-3 form__group form__group-fast' >
