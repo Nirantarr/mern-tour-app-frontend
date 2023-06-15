@@ -20,7 +20,7 @@ const Register = () => {
   }
   const handleClick=async(e)=>{
     e.preventDefault();
-    console.log("thi is credential",credentials);
+    // console.log("thi is credential",credentials);
     try {
       const res = await fetch(`${BASE_URL}/auth/register`,{
         method:'post',

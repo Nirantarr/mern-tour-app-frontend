@@ -1,4 +1,4 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef,useContext} from 'react'
 import { Container,Row,Col, Form, ListGroup } from 'reactstrap'
 import { useParams } from 'react-router-dom'
 // import tourData from '../assets/data/tours'
@@ -8,6 +8,7 @@ import avatar from '../assets/images/avatar.jpg'
 import calculateAvgRating from '../utils/avgRating'
 import Bookingtour from '../components/Booking/Bookingtour'
 import '../styles/TourDetails.css'
+import { AuthContext } from '../context/AuthContext'
 const TourDetails = () => {
   const params = useParams(); 
   const id = params.id;
@@ -16,13 +17,43 @@ const TourDetails = () => {
   const {photo,title,desc,price,reviews,city,distance,maxGroupSize}=tour;
   const {roundedRating,totalRating} = calculateAvgRating(reviews)
   const options = {day:"numeric", month:'long', year:'numeric'};
- const date = new Date("06-08-2023").toLocaleDateString("en-US",options);
+//  const date = new Date("06-08-2023").toLocaleDateString("en-US",options);
+//  const date1 = new Date(reviews.createdAt).toDateString();
+//  console.log(date1);
 
+ const {user}=useContext(AuthContext);
  const reviewRef = useRef("");
  const [tourRating, settourRating] = useState(null);
- const submitHandler=(e)=>{
+
+ const submitHandler= async(e)=>{
   e.preventDefault();
   const reviewText = reviewRef.current.value;
+  try {
+    if(!user || user===undefined|| user===null){
+      alert("Please sign in to add Review");
+    }
+    const reviewObj={
+      username:user.username,
+      reviewText,
+      rating:tourRating
+    }
+    const res=await fetch(`${BASE_URL}/review/${id}`,{
+      method:'post',
+      headers:{
+        'content-type':'application/json',
+      },
+      credentials:"include",
+      body:JSON.stringify(reviewObj)
+    });
+    const result = await res.json();
+    if(!res.ok){ 
+      return alert(result.message)
+    }
+    alert(result.message);
+    window.location.reload();
+  } catch (error) {
+    alert(error.message);
+  }
   alert(`${tourRating} and ${reviewText}`);
  }
   return (
@@ -75,12 +106,12 @@ const TourDetails = () => {
                       <div className="w-100">
                         <div className="d-flex align-items-center justify-content-between">
                           <div>
-                            <h5>{el.name}</h5>
-                            <p>{date}</p>
+                            <h5>{el.username}</h5>
+                            <p>{el.createdAt}</p>
                           </div>
-                          <span className='d-flex align-items-center'>5<i class="ri-star-fill"></i></span>
+                          <span className='d-flex align-items-center'>{el.rating}<i class="ri-star-fill"></i></span>
                         </div>
-                        <h6>{el.comment}</h6>
+                        <h6>{el.reviewText}</h6>
                       </div>
                     </div>
                   ))}

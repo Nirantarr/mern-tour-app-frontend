@@ -17,8 +17,10 @@ const Login = () => {
   const handleChange=(e)=>{
  setcredentials(prev=> ({...prev,[e.target.id]:e.target.value}))
   }
-  const handleClick=async(e)=>{
-    dispatch({type:'LOGIN_START'})
+  const handleClick = async(e)=>{
+      e.preventDefault();
+    // console.log(credentials);
+    dispatch({type:'LOGIN_START'});
     try {
       const res = await fetch(`${BASE_URL}/auth/login`,{
         method:'post',
@@ -29,6 +31,7 @@ const Login = () => {
         body:JSON.stringify(credentials),
       })
       const result = await res.json();
+      console.log("res for login",result.message)
       if(!res.ok)alert(result.message);
 
       dispatch({type:'LOGIN_SUCCESS',payload:result.data})
@@ -37,7 +40,7 @@ const Login = () => {
       dispatch({type:'LOGIN_FAILURE',payload:error.message})
       alert(error.message)
     }
-    e.preventDefault();
+  
   }
   return (
    <section>

@@ -39,7 +39,7 @@ const Tours = () => {
         <Row>
           {
             tours?.map(tour=>(
-              <Col className='mb-4'lg='3'key={tour._id}><Tourcard tour={tour}/></Col>
+              <Col className='mb-4'lg='3' md='6' sm='6' key={tour._id}><Tourcard tour={tour}/></Col>
             ))}
             <Col lg='12'>
                {/* here we created and array and .keys() generates numerical value for the creatted array. */}

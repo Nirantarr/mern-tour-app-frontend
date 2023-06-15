@@ -66,4 +66,17 @@
     font-size: .9rem;
     color: #fff;
 }
-
+@media only screen and (max-width: 576px){
+    .tour__title{
+        font-size: 1rem;
+    }
+    .booking__btn a{
+        font-size: .8rem;
+    }
+    .booking__btn {
+        padding: .3rem .5rem !important;
+    }
+    .tour__location, .tour__rating{
+        font-size: .7rem;
+    }
+}
