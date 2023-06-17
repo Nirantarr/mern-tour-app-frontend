@@ -7,6 +7,8 @@ import SearchResult from '../pages/SearchResult'
 import TourDetails from '../pages/TourDetails'
 import Tours from '../pages/Tours'
 import Tourbooked from '../components/BookinConfirmed/Tourbooked'
+import { Admin } from '../pages/Admin'
+import { Admintour } from '../components/AdminTour/Admintour'
 
 const Router = () => {
   return (
@@ -19,6 +21,9 @@ const Router = () => {
     <Route path='/login' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/tours/search' element={<SearchResult/>}/>
+    <Route path='/admin' element={<Admin/>} />
+    <Route path='/admin/tour' element={<Admintour/>}/>
+
  </Routes>
   )
 }

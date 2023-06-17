@@ -78,7 +78,7 @@ const Bookingtour = ({tour,roundedRating}) => {
             </Form>
         </div>
         <div className="booking__bottom">
-            <ListGroup>
+            <ListGroup >
                 <ListGroupItem className='border-0 px-0'>
                     <h5 className='d-flex align-items-center gap-1'>${price}<i class="ri-close-line"></i> 1 Person</h5>
                     <span>${price}</span>

@@ -5,7 +5,8 @@
 } */
 .newsletter__section{
     margin-top: 3rem;
-    background: #cae5f4;
+    /* background: #cae5f4; */
+    border-bottom: 2px solid rgb(255, 245, 245);
 }
 .newsletter__img img{
     width: 100%;

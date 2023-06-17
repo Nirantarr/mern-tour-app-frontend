@@ -14,12 +14,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* background-color: #cdcdf1; */
 }
 
 body {
   font-family: var(--font-name);
+  background-color: #cdcdf1;
+  /* background-color: #d1f7f2; */
 }
-
 section {
   padding: 50px 0px;
 }

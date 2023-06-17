@@ -1,14 +1,23 @@
 /* 1rem = 16px */
+.nav_wrapper{
+    justify-content: space-evenly;
+}
+.navigation{
+    margin-right: 3rem;
+}
 
+.logo{
+    width: 30%;
+}
 .header1{
     width: 100%;
     height: 5rem;
     line-height: 5rem;
-    /* border: 1px solid black; */
 }
 
 .logo img{
-    width: 30%;
+    
+    width: 40%;
 }
 
 .menu{
@@ -44,7 +53,10 @@
     box-shadow:  3px 3px 8px -3px #ddd;
     z-index: 999;
 }
-
+.dark-mode{
+    /* background-color: rgb(54, 39, 54); */
+    background-color: #cdcdf1;
+}
 @media only screen and (max-width:992px){
     .logo img{
         width: 20%;
@@ -82,9 +94,16 @@
 
 @media only screen and (max-width: 760px){
     .logo img{
-        width: 45%;
+        width: 65%;
     }
     .menu{
         width: calc(100% - 50%);
     }
 }
+@media only screen and (max-width: 576px)
+{
+    .logo img{
+        width: 100%;
+    }
+}
+/* ======================Dark button css ===================== */

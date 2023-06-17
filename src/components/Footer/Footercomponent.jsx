@@ -60,12 +60,12 @@ const Footercomponent = () => {
             }
           </ListGroup>
         </Col>
-        <Col lg='3'>
+        <Col lg='3' >
         <h5 className='footer__link-title'>Links</h5>
-          <ListGroup className='footer__quick-links'>
+          <ListGroup className='footer__quick-links '>
             {
               quick__links.map((el,i)=>(
-                <ListGroupItem key={i} className='ps-0 border-0'><Link to={el.path}>{el.display}</Link></ListGroupItem>
+                <ListGroupItem key={i} className='ps-0 border-0 '><Link to={el.path}>{el.display}</Link></ListGroupItem>
               ))
             }
           </ListGroup>

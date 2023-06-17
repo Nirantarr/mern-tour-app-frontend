@@ -1,6 +1,10 @@
 .footer{
     padding-top: 70px;
     padding-bottom: 30px;
+
+}
+.link__background{
+    background: blue;
 }
 .footer .logo img{
     width: 50%;
@@ -23,6 +27,7 @@
     color: var(--text-color);
     font-size: 1.1rem;
 }
+
 .footer__copyright span i{
 color:var(--primary-color);
 }
